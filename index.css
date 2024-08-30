@@ -37,6 +37,7 @@ body {
   height: 100%;
   object-fit: cover;
   backface-visibility: hidden;
+  user-select: none;
 }
 
 .buttonGroup {
@@ -56,6 +57,7 @@ body {
   background: #000000b5;
   color: #ffffff;
   position: absolute;
+  cursor: pointer;
 }
 
 .buttonGroup .rtbutton {
