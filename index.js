@@ -4,6 +4,7 @@ let prevBtn = document.getElementById("prevBtn");
 let nextBtn = document.getElementById("nextBtn");
 let slider = document.querySelector(".slider");
 let dot = document.querySelectorAll(".dot");
+let divButtonDot = document.querySelector(".div-Button-dot");
 
 let ArraySlide = Array.from(slideList);
 
@@ -36,10 +37,8 @@ function hoverSlider() {
     console.log("Mouse out slider");
   });
 
-  prevBtn.addEventListener("mouseover", stopAutoSlider);
-  prevBtn.addEventListener("mouseout", startAutoSlider);
-  nextBtn.addEventListener("mouseover", stopAutoSlider);
-  nextBtn.addEventListener("mouseout", startAutoSlider);
+  divButtonDot.addEventListener("mouseover", stopAutoSlider);
+  divButtonDot.addEventListener("mouseout", startAutoSlider);
 }
 hoverSlider();
 
@@ -119,9 +118,10 @@ function handleDragMove(event) {
   if (Math.abs(diffX) > 50) {
     // Adjust threshold as needed
     if (diffX > 0) {
-      nextBtnFunc();
-    } else {
       PrevBtnFunc();
+      this.style.cursor = "grabbing";
+    } else {
+      nextBtnFunc();
     }
     isDragging = false;
   }
