@@ -1,0 +1,120 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #bbb8c2c2; /* يمكن تغيير اللون حسب الرغبة */
+}
+
+.slider-containar {
+  position: relative;
+  width: 400px;
+  height: 400px;
+  perspective: 1000px; /* تحديد العمق للرؤية ثلاثية الأبعاد */
+}
+
+.slider {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  transform-style: preserve-3d; /* الحفاظ على التداخل الثلاثي الأبعاد */
+  transform: rotateY(0deg); /* يمكن تعديل الزاوية إذا لزم الأمر */
+  transition: transform 1s ease-in-out; /* تأثير انتقال ناعم */
+}
+
+.slide {
+  position: absolute;
+  border-radius: 80px;
+  padding: 60px;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  backface-visibility: hidden;
+}
+
+.buttonGroup {
+  position: absolute;
+  top: 50%;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  transform: translateY(-50%);
+  z-index: 10;
+}
+
+.buttonGroup button {
+  padding: 20px;
+  border-radius: 20px;
+  border: none;
+  background: #000000b5;
+  color: #ffffff;
+  position: absolute;
+}
+
+.buttonGroup .rtbutton {
+  left: -530px;
+}
+.buttonGroup .lftbutton {
+  left: 60px;
+}
+
+.active {
+  transition: transform 1s ease-in-out;
+  z-index: 10;
+  opacity: 1;
+  transform: rotateY(0deg) translateZ(275px);
+  cursor: grab;
+}
+
+.coming {
+  transition: transform 1s ease-in-out;
+  transform: rotateY(60deg) translateZ(252px);
+  opacity: 1;
+}
+
+.past {
+  transform: rotateY(-55deg) translateZ(273px);
+  transition: transform 1s ease-in-out;
+  opacity: 0.9;
+}
+
+.pagination {
+  position: absolute;
+  bottom: 110px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  justify-content: center;
+}
+
+.dot {
+  width: 14px;
+  height: 14px;
+  background: #bbb;
+  border-radius: 50%;
+  margin: 0 8px;
+  cursor: pointer;
+  transition: background 0.3s, transform 0.3s;
+}
+
+.dot.active {
+  background: #555;
+}
+
+.dot:hover {
+  background: #333;
+  transform: scale(1.2);
+}
+
+@media (max-width: 750px) {
+  .buttonGroup {
+    display: none;
+  }
+}
